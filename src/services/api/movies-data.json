@@ -1,0 +1,200 @@
+[
+  {
+    "Title": "Star Wars: Episode VII - The Force Awakens",
+    "Type": "movie",
+    "Poster": "https://m.media-amazon.com/images/M/MV5BOTAzODEzNDAzMl5BMl5BanBnXkFtZTgwMDU1MTgzNzE@._V1_SX300.jpg",
+    "Actors": "Harrison Ford, Mark Hamill, Carrie Fisher, Adam Driver",
+    "Prices": [
+      {
+        "Cinema": "Cinema World",
+        "Price": 24.7,
+        "Highlight": true
+      },
+      {
+        "Cinema": "Film World",
+        "Price": 36.02,
+        "Highlight": false
+      }
+    ]
+  },
+  {
+    "Title": "Star Wars: Episode VIII - The Last Jedi",
+    "Type": "movie",
+    "Poster": "https://m.media-amazon.com/images/M/MV5BMjQ1MzcxNjg4N15BMl5BanBnXkFtZTgwNzgwMjY4MzI@._V1_SX300.jpg",
+    "Actors": "Mark Hamill, Carrie Fisher, Adam Driver, Daisy Ridley",
+    "Prices": [
+      {
+        "Cinema": "Cinema World",
+        "Price": 24,
+        "Highlight": true
+      },
+      {
+        "Cinema": "Film World",
+        "Price": 35.29,
+        "Highlight": false
+      }
+    ]
+  },
+  {
+    "Title": "Star Wars: Episode IX - The Rise of Skywalker",
+    "Type": "movie",
+    "Poster": "https://m.media-amazon.com/images/M/MV5BMDljNTQ5ODItZmQwMy00M2ExLTljOTQtZTVjNGE2NTg0NGIxXkEyXkFqcGdeQXVyODkzNTgxMDg@._V1_SX300.jpg",
+    "Actors": "Carrie Fisher, Mark Hamill, Adam Driver, Daisy Ridley",
+    "Prices": [
+      {
+        "Cinema": "Cinema World",
+        "Price": 23,
+        "Highlight": true
+      },
+      {
+        "Cinema": "Film World",
+        "Price": 33.85,
+        "Highlight": false
+      }
+    ]
+  },
+  {
+    "Title": "Rogue One: A Star Wars Story",
+    "Type": "movie",
+    "Poster": "https://m.media-amazon.com/images/M/MV5BMjEwMzMxODIzOV5BMl5BanBnXkFtZTgwNzg3OTAzMDI@._V1_SX300.jpg",
+    "Actors": "Felicity Jones, Diego Luna, Alan Tudyk, Donnie Yen",
+    "Prices": [
+      {
+        "Cinema": "Cinema World",
+        "Price": 25,
+        "Highlight": true
+      },
+      {
+        "Cinema": "Film World",
+        "Price": 40.34,
+        "Highlight": false
+      }
+    ]
+  },
+  {
+    "Title": "Solo: A Star Wars Story",
+    "Type": "movie",
+    "Poster": "https://m.media-amazon.com/images/M/MV5BOTM2NTI3NTc3Nl5BMl5BanBnXkFtZTgwNzM1OTQyNTM@._V1_SX300.jpg",
+    "Actors": "Alden Ehrenreich, Joonas Suotamo, Woody Harrelson, Emilia Clarke",
+    "Prices": [
+      {
+        "Cinema": "Cinema World",
+        "Price": 24.5,
+        "Highlight": true
+      },
+      {
+        "Cinema": "Film World",
+        "Price": 34.92,
+        "Highlight": false
+      }
+    ]
+  },
+  {
+    "Title": "Star Wars: Episode IV - A New Hope",
+    "Type": "movie",
+    "Poster": "https://m.media-amazon.com/images/M/MV5BNzg4MjQxNTQtZmI5My00YjMwLWJlMjUtMmJlY2U2ZWFlNzY1XkEyXkFqcGdeQXVyODk4OTc3MTY@._V1_SX300.jpg",
+    "Actors": "Mark Hamill, Harrison Ford, Carrie Fisher, Peter Cushing",
+    "Prices": [
+      {
+        "Cinema": "Cinema World",
+        "Price": 25.5,
+        "Highlight": true
+      },
+      {
+        "Cinema": "Film World",
+        "Price": 32.98,
+        "Highlight": false
+      }
+    ]
+  },
+  {
+    "Title": "Star Wars: Episode V - The Empire Strikes Back",
+    "Type": "movie",
+    "Poster": "https://m.media-amazon.com/images/M/MV5BYmU1NDRjNDgtMzhiMi00NjZmLTg5NGItZDNiZjU5NTU4OTE0XkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg",
+    "Actors": "Mark Hamill, Harrison Ford, Carrie Fisher, Billy Dee Williams",
+    "Prices": [
+      {
+        "Cinema": "Cinema World",
+        "Price": 23,
+        "Highlight": true
+      },
+      {
+        "Cinema": "Film World",
+        "Price": 34.14,
+        "Highlight": false
+      }
+    ]
+  },
+  {
+    "Title": "Star Wars: Episode VI - Return of the Jedi",
+    "Type": "movie",
+    "Poster": "https://m.media-amazon.com/images/M/MV5BOWZlMjFiYzgtMTUzNC00Y2IzLTk1NTMtZmNhMTczNTk0ODk1XkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_SX300.jpg",
+    "Actors": "Mark Hamill, Harrison Ford, Carrie Fisher, Billy Dee Williams",
+    "Prices": [
+      {
+        "Cinema": "Cinema World",
+        "Price": 24.21,
+        "Highlight": true
+      },
+      {
+        "Cinema": "Film World",
+        "Price": 31.69,
+        "Highlight": false
+      }
+    ]
+  },
+  {
+    "Title": "Star Wars: Episode I - The Phantom Menace",
+    "Type": "movie",
+    "Poster": "https://m.media-amazon.com/images/M/MV5BYTRhNjcwNWQtMGJmMi00NmQyLWE2YzItODVmMTdjNWI0ZDA2XkEyXkFqcGdeQXVyNTAyODkwOQ@@._V1_SX300.jpg",
+    "Actors": "Liam Neeson, Ewan McGregor, Natalie Portman, Jake Lloyd",
+    "Prices": [
+      {
+        "Cinema": "Cinema World",
+        "Price": 26.42,
+        "Highlight": true
+      },
+      {
+        "Cinema": "Film World",
+        "Price": 39.16,
+        "Highlight": false
+      }
+    ]
+  },
+  {
+    "Title": "Star Wars: Episode II - Attack of the Clones",
+    "Type": "movie",
+    "Poster": "https://m.media-amazon.com/images/M/MV5BMDAzM2M0Y2UtZjRmZi00MzVlLTg4MjEtOTE3NzU5ZDVlMTU5XkEyXkFqcGdeQXVyNDUyOTg3Njg@._V1_SX300.jpg",
+    "Actors": "Ewan McGregor, Natalie Portman, Hayden Christensen, Christopher Lee",
+    "Prices": [
+      {
+        "Cinema": "Cinema World",
+        "Price": 20.51,
+        "Highlight": true
+      },
+      {
+        "Cinema": "Film World",
+        "Price": 28.66,
+        "Highlight": false
+      }
+    ]
+  },
+  {
+    "Title": "Star Wars: Episode III - Revenge of the Sith",
+    "Type": "movie",
+    "Poster": "https://m.media-amazon.com/images/M/MV5BNTc4MTc3NTQ5OF5BMl5BanBnXkFtZTcwOTg0NjI4NA@@._V1_SX300.jpg",
+    "Actors": "Ewan McGregor, Natalie Portman, Hayden Christensen, Ian McDiarmid",
+    "Prices": [
+      {
+        "Cinema": "Cinema World",
+        "Price": 23,
+        "Highlight": true
+      },
+      {
+        "Cinema": "Film World",
+        "Price": 32.22,
+        "Highlight": false
+      }
+    ]
+  }
+]
