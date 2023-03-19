@@ -9,7 +9,7 @@ import {
   fetchDogBreedImagesStatus,
 } from '../../store/dogs/dogs.slice';
 import { useNavigate } from 'react-router-dom';
-import { List, ListItemButton, ListItemText, CircularProgress, Box, AlertTitle, Alert, Grid } from '@mui/material';
+import { List, ListItemButton, ListItemText, Box, AlertTitle, Alert, Grid } from '@mui/material';
 import { DogSubBreeds } from './components/dogSubBreeds';
 import { ExpandLess as ExpandLessIcon, ExpandMore as ExpandMoreIcon } from '@mui/icons-material';
 import { DogBreedImageGrid } from './components/dogBreedImageGrid';
