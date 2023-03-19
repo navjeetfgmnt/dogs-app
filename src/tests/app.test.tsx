@@ -4,7 +4,7 @@ import { BrowserRouter } from 'react-router-dom';
 
 describe('App render', () => {
   test('renders the app content correctly', () => {
-    const { getByText, getByRole } = render(
+    const { getByText } = render(
       <BrowserRouter>
         <App />
       </BrowserRouter>,

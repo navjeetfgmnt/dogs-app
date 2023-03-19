@@ -1,11 +1,12 @@
-# Getting Started 
-Run: `npm i`
+# Dogs Application 
+Run: `npm i` to install all project dependencies
 
-# Running the development server
+## Running the development server
 
 In the project directory, you can run:
-### `npm run start`
+#### `npm run start`
+This will start the server on port ``3000``
 
-# Running the tests
-### `npm run test`
+## Running the tests
+#### `npm run test`
 
