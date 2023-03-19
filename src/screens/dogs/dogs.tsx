@@ -1,29 +1,31 @@
 import React, { Fragment, useCallback, useEffect, useState } from 'react';
 import { useAppSelector, useAppDispatch } from '../../app/hooks';
-import { fetchDogs, fetchDogsStatus, selectDogs } from '../../store/dogs/dogs.slice';
-import { useNavigate } from 'react-router-dom';
 import {
-  List,
-  ListSubheader,
-  ListItemButton,
-  ListItemText,
-  CircularProgress,
-  Box,
-  AlertTitle,
-  Alert,
-} from '@mui/material';
+  fetchDogs,
+  fetchDogsStatus,
+  selectDogs,
+  fetchDogRandomImages,
+  dogBreedImages,
+  fetchDogBreedImagesStatus,
+} from '../../store/dogs/dogs.slice';
+import { useNavigate } from 'react-router-dom';
+import { List, ListItemButton, ListItemText, CircularProgress, Box, AlertTitle, Alert, Grid } from '@mui/material';
 import { DogSubBreeds } from './components/dogSubBreeds';
 import { ExpandLess as ExpandLessIcon, ExpandMore as ExpandMoreIcon } from '@mui/icons-material';
+import { DogBreedImageGrid } from './components/dogBreedImageGrid';
 
 export function Dogs() {
   const dispatch = useAppDispatch();
   const dogsData = useAppSelector(selectDogs);
-  const status = useAppSelector(fetchDogsStatus);
+  const dogBreedImagesData = useAppSelector(dogBreedImages);
+  const dogsBreedReqStatus = useAppSelector(fetchDogsStatus);
+  const dogsBreedImagesReqStatus = useAppSelector(fetchDogBreedImagesStatus);
   const navigate = useNavigate();
   const [expandedBreed, setExpandedBreed] = useState('');
 
   useEffect(() => {
     dispatch(fetchDogs());
+    dispatch(fetchDogRandomImages());
   }, [dispatch]);
 
   const directToBreed = useCallback(
@@ -34,13 +36,13 @@ export function Dogs() {
     [navigate],
   );
 
-  if (status === 'loading') {
+  if (dogsBreedReqStatus === 'loading') {
     return (
       <Box py={2} sx={{ textAlign: 'center' }}>
         <CircularProgress />
       </Box>
     );
-  } else if (status === 'failed' || (dogsData && dogsData.status !== 'success')) {
+  } else if (dogsBreedReqStatus === 'failed' || (dogsData && dogsData.status !== 'success')) {
     return (
       <Box py={2}>
         <Alert severity="error">
@@ -52,46 +54,53 @@ export function Dogs() {
   }
 
   return (
-    <List
-      sx={{ width: '100%', maxWidth: 350, marginTop: 2 }}
-      component="nav"
-      aria-labelledby="nested-list-subheader"
-      subheader={
-        <ListSubheader component="div" id="nested-list-subheader">
-          Dog Breeds
-        </ListSubheader>
-      }
-    >
-      {dogsData &&
-        Object.keys(dogsData.message).map((breed, index) => (
-          <Fragment key={breed}>
-            <ListItemButton divider>
-              <span>{`${index + 1}.`}</span>
-              <ListItemText
-                onClick={() => directToBreed(breed)}
-                sx={{ paddingLeft: '10px', textTransform: 'capitalize' }}
-                primary={breed}
-              />
-              {dogsData.message[breed].length > 0 && (
-                <>
-                  {expandedBreed === breed ? (
-                    <ExpandLessIcon onClick={() => setExpandedBreed('')} />
-                  ) : (
-                    <ExpandMoreIcon onClick={() => setExpandedBreed(breed)} />
-                  )}
-                </>
-              )}
-            </ListItemButton>
-            <List component="div" disablePadding>
-              {expandedBreed === breed && (
-                <DogSubBreeds
-                  subBreeds={dogsData.message[breed]}
-                  handleClick={(subBreed: string) => directToBreed(breed, subBreed)}
-                />
-              )}
-            </List>
-          </Fragment>
-        ))}
-    </List>
+    <>
+      <Grid container spacing={3} mt={0}>
+        <Grid item xs={12} md={6}>
+          {dogsBreedImagesReqStatus === 'failed' && <Alert severity="error">Error loading Images</Alert>}
+          {dogsBreedImagesReqStatus !== 'loading' && dogBreedImagesData && (
+            <DogBreedImageGrid images={dogBreedImagesData.message} />
+          )}
+        </Grid>
+        <Grid item xs={12} md={6} sx={{ overflow: 'auto' }}>
+          <List
+            sx={{ width: '100%', height: 'calc(100vh - 125px)', maxWidth: 400, overflow: 'auto' }}
+            component="nav"
+            aria-labelledby="nested-list-subheader"
+          >
+            {dogsData &&
+              Object.keys(dogsData.message).map((breed, index) => (
+                <Fragment key={breed}>
+                  <ListItemButton divider sx={{ maxWidth: 375 }}>
+                    <span>{`${index + 1}.`}</span>
+                    <ListItemText
+                      onClick={() => directToBreed(breed)}
+                      sx={{ paddingLeft: '10px', textTransform: 'capitalize' }}
+                      primary={breed}
+                    />
+                    {dogsData.message[breed].length > 0 && (
+                      <>
+                        {expandedBreed === breed ? (
+                          <ExpandLessIcon onClick={() => setExpandedBreed('')} />
+                        ) : (
+                          <ExpandMoreIcon onClick={() => setExpandedBreed(breed)} />
+                        )}
+                      </>
+                    )}
+                  </ListItemButton>
+                  <List component="div" disablePadding>
+                    {expandedBreed === breed && (
+                      <DogSubBreeds
+                        subBreeds={dogsData.message[breed]}
+                        handleClick={(subBreed: string) => directToBreed(breed, subBreed)}
+                      />
+                    )}
+                  </List>
+                </Fragment>
+              ))}
+          </List>
+        </Grid>
+      </Grid>
+    </>
   );
 }

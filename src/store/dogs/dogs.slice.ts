@@ -1,21 +1,16 @@
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import { RootState } from '../store';
-import { fetchDogsData, fetchBreedImage } from '../../services/dogs.service';
-import { InterfaceDogs, InterfaceBreedImage, InterfaceDogInfo } from '../../types/dogs';
-
-export interface DogsState {
-  data: InterfaceDogs | null;
-  status: 'idle' | 'loading' | 'failed';
-  breed: {
-    data: InterfaceBreedImage | null;
-    status: 'idle' | 'loading' | 'failed';
-  };
-}
+import { fetchDogsData, fetchBreedImage, fetchRandomBreedImages } from '../../services/dogs.service';
+import { InterfaceDogInfo, DogsState } from '../../types/dogs';
 
 const initialState: DogsState = {
   data: null,
   status: 'idle',
   breed: {
+    data: null,
+    status: 'idle',
+  },
+  breedImages: {
     data: null,
     status: 'idle',
   },
@@ -26,6 +21,11 @@ export const fetchDogs = createAsyncThunk('dogs/fetchDogsData', async () => awai
 export const fetchDogBreedImage = createAsyncThunk(
   'dogs/fetchDogBreedImage',
   async (dogInfo: InterfaceDogInfo) => await fetchBreedImage(dogInfo),
+);
+
+export const fetchDogRandomImages = createAsyncThunk(
+  'dogs/fetchDogRandomImages',
+  async () => await fetchRandomBreedImages(),
 );
 
 export const dogsSlice = createSlice({
@@ -54,6 +54,16 @@ export const dogsSlice = createSlice({
       })
       .addCase(fetchDogBreedImage.rejected, state => {
         state.breed.status = 'failed';
+      })
+      .addCase(fetchDogRandomImages.pending, state => {
+        state.breedImages.status = 'loading';
+      })
+      .addCase(fetchDogRandomImages.fulfilled, (state, action) => {
+        state.breedImages.status = 'idle';
+        state.breedImages.data = action.payload;
+      })
+      .addCase(fetchDogRandomImages.rejected, state => {
+        state.breedImages.status = 'failed';
       });
   },
 });
@@ -61,4 +71,6 @@ export const selectDogs = (state: RootState) => state.dogs.data;
 export const fetchDogsStatus = (state: RootState) => state.dogs.status;
 export const breedImage = (state: RootState) => state.dogs.breed.data;
 export const fetchBreedImageStatus = (state: RootState) => state.dogs.breed.status;
+export const dogBreedImages = (state: RootState) => state.dogs.breedImages.data;
+export const fetchDogBreedImagesStatus = (state: RootState) => state.dogs.breedImages.status;
 export default dogsSlice.reducer;

@@ -8,8 +8,8 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-      <Container maxWidth={false}>
-        <Box sx={{ height: '100vh' }}>
+      <Container sx={{ maxWidth: 1000, margin: 'auto' }}>
+        <Box sx={{ height: 'calc(100vh - 125px)' }}>
           <Outlet />
         </Box>
       </Container>
