@@ -12,7 +12,7 @@ import {
   AlertTitle,
   Alert,
 } from '@mui/material';
-import { DogSubBreeds } from './dogSubBreeds';
+import { DogSubBreeds } from './components/dogSubBreeds';
 import { ExpandLess as ExpandLessIcon, ExpandMore as ExpandMoreIcon } from '@mui/icons-material';
 
 export function Dogs() {
@@ -53,7 +53,7 @@ export function Dogs() {
 
   return (
     <List
-      sx={{ width: '100%', maxWidth: 300, marginTop: 2 }}
+      sx={{ width: '100%', maxWidth: 350, marginTop: 2 }}
       component="nav"
       aria-labelledby="nested-list-subheader"
       subheader={
@@ -65,11 +65,11 @@ export function Dogs() {
       {dogsData &&
         Object.keys(dogsData.message).map((breed, index) => (
           <Fragment key={breed}>
-            <ListItemButton>
+            <ListItemButton divider>
               <span>{`${index + 1}.`}</span>
               <ListItemText
                 onClick={() => directToBreed(breed)}
-                sx={{ marginLeft: '10px', marginRight: '10px', textTransform: 'capitalize' }}
+                sx={{ paddingLeft: '10px', textTransform: 'capitalize' }}
                 primary={breed}
               />
               {dogsData.message[breed].length > 0 && (

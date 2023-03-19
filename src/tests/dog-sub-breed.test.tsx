@@ -1,5 +1,5 @@
 import { render } from '@testing-library/react';
-import { DogSubBreeds } from '../screens/dogs/dogSubBreeds';
+import { DogSubBreeds } from '../screens/dogs/components/dogSubBreeds';
 
 describe('Dog Sub-breed list', () => {
   const subBreeds = ['shephard'];

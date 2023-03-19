@@ -1,15 +1,27 @@
-import { useRouteError } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { Box, Button, Typography } from '@mui/material';
 
 export default function ErrorPage() {
-  const error: any = useRouteError();
+  const navigate = useNavigate();
 
   return (
-    <div id="error-page">
-      <h1>Oops!</h1>
-      <p>Sorry, an unexpected error has occurred.</p>
+    <Box
+      sx={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        flexDirection: 'column',
+        minHeight: '100vh',
+        background: '#e6e6e6',
+      }}
+    >
+      <Typography variant="h1">404</Typography>
+      <Typography variant="h6">The page you’re looking for doesn’t exist.</Typography>
       <p>
-        <i>{error.statusText || error.message}</i>
+        <Button variant="contained" onClick={() => navigate('/')}>
+          Back Home
+        </Button>
       </p>
-    </div>
+    </Box>
   );
 }
