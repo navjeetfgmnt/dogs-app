@@ -13,6 +13,7 @@ import { List, ListItemButton, ListItemText, CircularProgress, Box, AlertTitle, 
 import { DogSubBreeds } from './components/dogSubBreeds';
 import { ExpandLess as ExpandLessIcon, ExpandMore as ExpandMoreIcon } from '@mui/icons-material';
 import { DogBreedImageGrid } from './components/dogBreedImageGrid';
+import { Loader } from '../../components/Loader';
 
 export function Dogs() {
   const dispatch = useAppDispatch();
@@ -37,11 +38,7 @@ export function Dogs() {
   );
 
   if (dogsBreedReqStatus === 'loading') {
-    return (
-      <Box py={2} sx={{ textAlign: 'center' }}>
-        <CircularProgress />
-      </Box>
-    );
+    return <Loader />;
   } else if (dogsBreedReqStatus === 'failed' || (dogsData && dogsData.status !== 'success')) {
     return (
       <Box py={2}>

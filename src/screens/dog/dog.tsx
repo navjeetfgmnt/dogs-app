@@ -4,6 +4,7 @@ import { fetchDogBreedImage, fetchBreedImageStatus, breedImage } from '../../sto
 import { Link, useParams } from 'react-router-dom';
 import { InterfaceDogInfo } from '../../types/dogs';
 import { Box, Grid, Alert, AlertTitle, CircularProgress, Typography } from '@mui/material';
+import { Loader } from '../../components/Loader';
 
 export function Dog() {
   const dispatch = useAppDispatch();
@@ -24,22 +25,7 @@ export function Dog() {
     return () => abortController.abort();
   }, [dispatch, breed, subBreed]);
 
-  if (status === 'loading') {
-    return (
-      <Box py={2} sx={{ textAlign: 'center' }}>
-        <CircularProgress />
-      </Box>
-    );
-  } else if (status === 'failed' || (dogBreedImageData && dogBreedImageData.status !== 'success')) {
-    return (
-      <Box py={2}>
-        <Alert severity="error">
-          <AlertTitle>Error</AlertTitle>
-          There was an error fetching data. Please try again later...
-        </Alert>
-      </Box>
-    );
-  }
+  if (status === 'loading') return <Loader />;
 
   return (
     <Grid container spacing={2} mt={1}>
@@ -50,7 +36,8 @@ export function Dog() {
         <Typography variant={'h5'}>Dog Name - {`${breed} ${subBreed}`}</Typography>
       </Grid>
       <Grid item xs={12}>
-        {dogBreedImageData && (
+        {(status === 'failed' || (dogBreedImageData && dogBreedImageData.status !== 'success')) && <ErrorState />}
+        {dogBreedImageData && dogBreedImageData.status === 'success' && (
           <>
             {!isImageLoaded && <CircularProgress />}
             <img src={dogBreedImageData.message} height={300} onLoad={() => setIsImageLoaded(true)} alt={breed} />
@@ -58,5 +45,16 @@ export function Dog() {
         )}
       </Grid>
     </Grid>
+  );
+}
+
+function ErrorState() {
+  return (
+    <Box py={2}>
+      <Alert severity="error">
+        <AlertTitle>Error</AlertTitle>
+        There was an error fetching data. Please try again later...
+      </Alert>
+    </Box>
   );
 }
